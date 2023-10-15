@@ -1,5 +1,6 @@
 <?php
 namespace Ben\Ancestor;
+declare(strict_types=1);
 class Human {
     public $age = 100;
     public function eat(self &$human)

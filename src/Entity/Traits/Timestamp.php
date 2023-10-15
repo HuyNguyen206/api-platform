@@ -14,23 +14,21 @@ trait Timestamp
 {
     use TimestampableEntity;
 
-    /**
-     * @var \DateTime|null
-     * @Timestampable(on="create")
-     * @Column(type="datetime")
-     */
-    #[Groups(['treasure:read'])]
-    #[Timestampable(on: 'create')]
-    #[Column(type: Types::DATETIME_MUTABLE)]
-    protected $createdAt;
-
-    /**
-     * @var \DateTime|null
-     * @Gedmo\Timestampable(on="update")
-     * @ORM\Column(type="datetime")
-     */
-    #[Groups(['treasure:read'])]
-    #[Timestampable(on: 'update')]
-    #[Column(type: Types::DATETIME_MUTABLE)]
-    protected $updatedAt;
+//    /**
+//     * @var \DateTime|null
+//     * @Timestampable(on="create")
+//     * @Column(type="datetime")
+//     */
+//    #[Timestampable(on: 'create')]
+//    #[Column(type: Types::DATETIME_MUTABLE)]
+//    protected $createdAt;
+//
+//    /**
+//     * @var \DateTime|null
+//     * @Gedmo\Timestampable(on="update")
+//     * @ORM\Column(type="datetime")
+//     */
+//    #[Timestampable(on: 'update')]
+//    #[Column(type: Types::DATETIME_MUTABLE)]
+//    protected $updatedAt;
 }
