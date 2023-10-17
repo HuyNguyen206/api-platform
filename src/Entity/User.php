@@ -25,6 +25,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -33,13 +34,15 @@ use Symfony\Component\Validator\Constraints\NotBlank;
     operations: [
         new Get(normalizationContext: ['groups' => ['users:read', 'users:item:read']]),
         new GetCollection(),
-        new Post(),
-        new Put(),
-        new Patch(),
+        new Post(security: 'is_granted("PUBLIC_ACCESS")',
+        validationContext: ['groups' => ['Default', 'PostValidation']]),
+        new Put( security: 'is_granted("ROLE_USER_EDIT")'),
+        new Patch( security: 'is_granted("ROLE_USER_EDIT")'),
         new Delete()
     ],
     normalizationContext: ['groups' => 'users:read'],
-    denormalizationContext: ['groups' => 'users:write']
+    denormalizationContext: ['groups' => 'users:write'],
+    security: 'is_granted("ROLE_USER")',
 )]
 #[ApiResource(
     uriTemplate: 'treasures/{treasure_id}/owner.{_format}',
@@ -55,6 +58,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
     normalizationContext: [
         'groups' => ['users:read']
     ],
+    security: 'is_granted("ROLE_USER")',
 )]
 #[UniqueEntity(fields: 'email', message: 'There is already an account with this email')]
 #[UniqueEntity(fields: 'name', message: 'There is already an account with this name')]
@@ -62,6 +66,9 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     use Timestamp;
+
+    private ?array $accessTokenScopes = null;
+
 
     /**
      * @var \DateTime|null
@@ -99,13 +106,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private array $roles = [];
 
-    /**
-     * @var string The hashed password
-     */
     #[ORM\Column]
-    #[Groups(['users:write'])]
-    #[NotBlank]
     private ?string $password = null;
+
+    #[Groups(['users:write'])]
+    #[SerializedName('password')]
+    #[NotBlank(groups: ['PostValidation'])]
+    private ?string $plainPassword = null;
 
     #[ORM\Column(length: 255)]
     #[Groups(['users:read', 'users:write', 'treasure:item:read'])]
@@ -114,7 +121,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany(mappedBy: 'owner', targetEntity: DragonTreasure::class, cascade: ['persist'])]
     #[Groups(['users:read', 'users:write'])]
-    #[Assert\Valid]
+    #[Assert\Valid(groups: ['PostValidation'])]
     private Collection $dragonTreasures;
 
     #[ORM\OneToMany(mappedBy: 'owner', targetEntity: ApiToken::class)]
@@ -158,10 +165,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
+        if (null === $this->accessTokenScopes) {
+            // logged in via the full user mechanism
+            $roles = $this->roles;
+            $roles[] = 'ROLE_FULL_USER';
+        } else {
+            $roles = $this->accessTokenScopes;
+        }
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
-
         return array_unique($roles);
     }
 
@@ -193,7 +205,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function eraseCredentials(): void
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+         $this->plainPassword = null;
     }
 
     public function getName(): ?string
@@ -278,5 +290,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             ->map(fn (ApiToken $token) => $token->getToken())
             ->toArray()
             ;
+    }
+
+    public function markAsTokenAuthenticated(array $scopes)
+    {
+        $this->accessTokenScopes = $scopes;
+    }
+
+    public function setPlainPassword(string $plainPassword): User
+    {
+        $this->plainPassword = $plainPassword;
+        return $this;
+    }
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
     }
 }

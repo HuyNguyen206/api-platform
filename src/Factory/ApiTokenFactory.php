@@ -69,4 +69,14 @@ final class ApiTokenFactory extends ModelFactory
     {
         return ApiToken::class;
     }
+
+    public function withScopes($scopes = []): self
+    {
+        return $this->addState(['scopes' => $scopes]);
+    }
+
+    public function asScopeRoleAdmin(): self
+    {
+        return $this->withScopes(['ROLE_ADMIN']);
+    }
 }

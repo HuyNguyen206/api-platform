@@ -1,0 +1,386 @@
+{
+    "title": "An error occurred",
+    "detail": "The content-type \"application/json\" is not supported. Supported MIME types are \"application/merge-patch+json\".",
+    "status": 415,
+    "trace": [
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\api-platform\\core\\src\\State\\Provider\\ContentNegotiationProvider.php",
+            "line": 48,
+            "function": "getInputFormat",
+            "class": "ApiPlatform\\State\\Provider\\ContentNegotiationProvider",
+            "type": "->",
+            "args": [
+                [],
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\api-platform\\core\\src\\Symfony\\Controller\\MainController.php",
+            "line": 74,
+            "function": "provide",
+            "class": "ApiPlatform\\State\\Provider\\ContentNegotiationProvider",
+            "type": "->",
+            "args": [
+                [],
+                {
+                    "id": 1
+                },
+                {
+                    "request": [],
+                    "uri_variables": {
+                        "id": 1
+                    },
+                    "resource_class": "App\\Entity\\User"
+                }
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\symfony\\http-kernel\\HttpKernel.php",
+            "line": 182,
+            "function": "__invoke",
+            "class": "ApiPlatform\\Symfony\\Controller\\MainController",
+            "type": "->",
+            "args": [
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\symfony\\http-kernel\\HttpKernel.php",
+            "line": 76,
+            "function": "handleRaw",
+            "class": "Symfony\\Component\\HttpKernel\\HttpKernel",
+            "type": "->",
+            "args": [
+                [],
+                1
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\symfony\\http-kernel\\Kernel.php",
+            "line": 197,
+            "function": "handle",
+            "class": "Symfony\\Component\\HttpKernel\\HttpKernel",
+            "type": "->",
+            "args": [
+                [],
+                1,
+                true
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\symfony\\http-kernel\\HttpKernelBrowser.php",
+            "line": 65,
+            "function": "handle",
+            "class": "Symfony\\Component\\HttpKernel\\Kernel",
+            "type": "->",
+            "args": [
+                [],
+                1,
+                true
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\symfony\\framework-bundle\\KernelBrowser.php",
+            "line": 171,
+            "function": "doRequest",
+            "class": "Symfony\\Component\\HttpKernel\\HttpKernelBrowser",
+            "type": "->",
+            "args": [
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\symfony\\browser-kit\\AbstractBrowser.php",
+            "line": 403,
+            "function": "doRequest",
+            "class": "Symfony\\Bundle\\FrameworkBundle\\KernelBrowser",
+            "type": "->",
+            "args": [
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\zenstruck\\browser\\src\\Browser\\Session\\Driver\\BrowserKitDriver.php",
+            "line": 86,
+            "function": "request",
+            "class": "Symfony\\Component\\BrowserKit\\AbstractBrowser",
+            "type": "->",
+            "args": [
+                "PATCH",
+                "http://localhost/api/users/1",
+                [],
+                [],
+                {
+                    "HTTP_USER_AGENT": "Symfony BrowserKit",
+                    "HTTP_0": "Accept",
+                    "HTTP_1": "application/ld+json",
+                    "HTTP_AUTHORIZATION": "Bearer tcp_cba1e8e63e1a85932b94b947125705a9afdcebb11dab8b1fe9c932cfe941872f",
+                    "HTTP_ACCEPT": "application/json",
+                    "CONTENT_TYPE": "application/json",
+                    "HTTP_HOST": "localhost",
+                    "HTTPS": false
+                },
+                "{\"name\":\"ben update\"}"
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\zenstruck\\browser\\src\\Browser\\Session\\Driver\\BrowserKitDriver.php",
+            "line": 711,
+            "function": "Zenstruck\\Browser\\Session\\Driver\\{closure}",
+            "class": "Zenstruck\\Browser\\Session\\Driver\\BrowserKitDriver",
+            "type": "->",
+            "args": []
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\zenstruck\\browser\\src\\Browser\\Session\\Driver\\BrowserKitDriver.php",
+            "line": 88,
+            "function": "wrapRequest",
+            "class": "Zenstruck\\Browser\\Session\\Driver\\BrowserKitDriver",
+            "type": "->",
+            "args": [
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\zenstruck\\browser\\src\\Browser\\Session.php",
+            "line": 86,
+            "function": "request",
+            "class": "Zenstruck\\Browser\\Session\\Driver\\BrowserKitDriver",
+            "type": "->",
+            "args": [
+                "PATCH",
+                "api/users/1",
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\zenstruck\\browser\\src\\Browser\\KernelBrowser.php",
+            "line": 301,
+            "function": "request",
+            "class": "Zenstruck\\Browser\\Session",
+            "type": "->",
+            "args": [
+                "PATCH",
+                "api/users/1",
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\zenstruck\\browser\\src\\Browser\\KernelBrowser.php",
+            "line": 363,
+            "function": "request",
+            "class": "Zenstruck\\Browser\\KernelBrowser",
+            "type": "->",
+            "args": [
+                "PATCH",
+                "api/users/1",
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\tests\\Functional\\UserResourceTest.php",
+            "line": 38,
+            "function": "patch",
+            "class": "Zenstruck\\Browser\\KernelBrowser",
+            "type": "->",
+            "args": [
+                "api/users/1",
+                {
+                    "json": {
+                        "name": "ben update"
+                    }
+                }
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php",
+            "line": 1612,
+            "function": "testPatchCanUpdateUser",
+            "class": "App\\Tests\\Functional\\UserResourceTest",
+            "type": "->",
+            "args": []
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php",
+            "line": 1218,
+            "function": "runTest",
+            "class": "PHPUnit\\Framework\\TestCase",
+            "type": "->",
+            "args": []
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\src\\Framework\\TestResult.php",
+            "line": 728,
+            "function": "runBare",
+            "class": "PHPUnit\\Framework\\TestCase",
+            "type": "->",
+            "args": []
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php",
+            "line": 968,
+            "function": "run",
+            "class": "PHPUnit\\Framework\\TestResult",
+            "type": "->",
+            "args": [
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\src\\Framework\\TestSuite.php",
+            "line": 684,
+            "function": "run",
+            "class": "PHPUnit\\Framework\\TestCase",
+            "type": "->",
+            "args": [
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\src\\Framework\\TestSuite.php",
+            "line": 684,
+            "function": "run",
+            "class": "PHPUnit\\Framework\\TestSuite",
+            "type": "->",
+            "args": [
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\src\\TextUI\\TestRunner.php",
+            "line": 651,
+            "function": "run",
+            "class": "PHPUnit\\Framework\\TestSuite",
+            "type": "->",
+            "args": [
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\src\\TextUI\\Command.php",
+            "line": 144,
+            "function": "run",
+            "class": "PHPUnit\\TextUI\\TestRunner",
+            "type": "->",
+            "args": [
+                [
+                    {
+                        "1": []
+                    }
+                ],
+                {
+                    "extensions": [],
+                    "listGroups": false,
+                    "listSuites": false,
+                    "listTests": false,
+                    "listTestsXml": false,
+                    "loader": null,
+                    "useDefaultConfiguration": true,
+                    "loadedExtensions": [],
+                    "unavailableExtensions": [],
+                    "notLoadedExtensions": [],
+                    "configuration": "D:\\laragon\\www\\api-platform\\phpunit.xml.dist",
+                    "filter": "/(App\\\\Tests\\\\Functional\\\\UserResourceTest::testPatchCanUpdateUser)( .*)?$/",
+                    "testSuffixes": [
+                        "UserResourceTest.php"
+                    ],
+                    "printer": "PHPUnit\\Util\\Log\\TeamCity",
+                    "configurationObject": [],
+                    "stderr": false,
+                    "columns": 80,
+                    "warnings": [],
+                    "debug": false,
+                    "listeners": [
+                        []
+                    ],
+                    "backupGlobals": false,
+                    "backupStaticAttributes": false,
+                    "beStrictAboutChangesToGlobalState": false,
+                    "cacheResult": true,
+                    "colors": "auto",
+                    "convertDeprecationsToExceptions": false,
+                    "convertErrorsToExceptions": true,
+                    "convertNoticesToExceptions": true,
+                    "convertWarningsToExceptions": true,
+                    "processIsolation": false,
+                    "stopOnDefect": false,
+                    "stopOnError": false,
+                    "stopOnFailure": false,
+                    "stopOnWarning": false,
+                    "stopOnIncomplete": false,
+                    "stopOnRisky": false,
+                    "stopOnSkipped": false,
+                    "failOnEmptyTestSuite": false,
+                    "failOnIncomplete": false,
+                    "failOnRisky": false,
+                    "failOnSkipped": false,
+                    "failOnWarning": false,
+                    "enforceTimeLimit": false,
+                    "defaultTimeLimit": 1,
+                    "timeoutForSmallTests": 1,
+                    "timeoutForMediumTests": 10,
+                    "timeoutForLargeTests": 60,
+                    "reportUselessTests": true,
+                    "strictCoverage": false,
+                    "ignoreDeprecatedCodeUnitsFromCodeCoverage": false,
+                    "disallowTestOutput": false,
+                    "disallowTodoAnnotatedTests": false,
+                    "beStrictAboutResourceUsageDuringSmallTests": false,
+                    "verbose": false,
+                    "reverseDefectList": false,
+                    "forceCoversAnnotation": false,
+                    "disableCodeCoverageIgnore": false,
+                    "registerMockObjectsFromTestArgumentsRecursively": false,
+                    "noInteraction": false,
+                    "executionOrder": 0,
+                    "resolveDependencies": true,
+                    "bootstrap": "D:\\laragon\\www\\api-platform\\tests/bootstrap.php",
+                    "executionOrderDefects": 0,
+                    "crap4jThreshold": 30,
+                    "excludeGroups": [],
+                    "groups": [],
+                    "randomOrderSeed": 1697521539,
+                    "repeat": false,
+                    "reportHighLowerBound": 90,
+                    "reportLowUpperBound": 50,
+                    "reverseList": false,
+                    "testdoxExcludeGroups": [],
+                    "testdoxGroups": [],
+                    "cacheResultFile": "D:\\laragon\\www\\api-platform"
+                },
+                [],
+                true
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\src\\TextUI\\Command.php",
+            "line": 97,
+            "function": "run",
+            "class": "PHPUnit\\TextUI\\Command",
+            "type": "->",
+            "args": [
+                [
+                    "D:/laragon/www/api-platform/vendor/phpunit/phpunit/phpunit",
+                    "--configuration",
+                    "D:\\laragon\\www\\api-platform\\phpunit.xml.dist",
+                    "--filter",
+                    "/(App\\\\Tests\\\\Functional\\\\UserResourceTest::testPatchCanUpdateUser)( .*)?$/",
+                    "--test-suffix",
+                    "UserResourceTest.php",
+                    "D:\\laragon\\www\\api-platform\\tests\\Functional",
+                    "--teamcity"
+                ],
+                true
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\phpunit",
+            "line": 107,
+            "function": "main",
+            "class": "PHPUnit\\TextUI\\Command",
+            "type": "::",
+            "args": []
+        }
+    ],
+    "type": "/errors/415"
+}

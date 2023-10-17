@@ -24,6 +24,10 @@ security:
                 path: app_logout
             access_token:
                 token_handler: App\Security\ApiTokenHandler
+            stateless: true
+
+    role_hierarchy:
+        ROLE_FULL_USER: [ ROLE_USER_EDIT, ROLE_TREASURE_CREATE, ROLE_TREASURE_EDIT ]
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall

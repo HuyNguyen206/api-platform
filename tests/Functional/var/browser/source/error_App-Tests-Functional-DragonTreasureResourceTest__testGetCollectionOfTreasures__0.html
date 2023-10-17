@@ -1,0 +1,162 @@
+{
+    "@context": "/api/contexts/Treasure",
+    "@id": "/api/treasures",
+    "@type": "hydra:Collection",
+    "hydra:totalItems": 5,
+    "hydra:member": [
+        {
+            "@id": "/api/treasures/1",
+            "@type": "Treasure",
+            "createdAt": "1970-03-06T17:46:30+00:00",
+            "updatedAt": "2010-01-12T17:19:29+00:00",
+            "id": 1,
+            "name": "Ab dolorum quia sint. Numquam quaerat eius amet omnis voluptates. Quis ipsa recusandae consequatur repudiandae incidunt odit. Quibusdam rerum error numquam dicta mollitia amet saepe.",
+            "description": "Praesentium quis mollitia cupiditate itaque voluptas molestias esse. Autem delectus aut reiciendis magnam. Quibusdam tempora ipsum sed dolore enim.",
+            "value": 256126,
+            "coolFactor": 74340139,
+            "isPublished": true,
+            "owner": "/api/users/1",
+            "shortDescription": "Praesen...",
+            "createdAtAgo": "53 years ago"
+        },
+        {
+            "@id": "/api/treasures/2",
+            "@type": "Treasure",
+            "createdAt": "1987-12-03T07:00:11+00:00",
+            "updatedAt": "1991-05-09T01:47:48+00:00",
+            "id": 2,
+            "name": "Tempora neque voluptatum rerum enim vel. Quia sint deleniti ab aut nesciunt. Qui quisquam tempora voluptatum esse voluptates facilis pariatur. Voluptas dicta architecto blanditiis asperiores eos. Voluptatum architecto consequatur est.",
+            "description": "Ipsa sint illum quia omnis. Eius voluptas vero aperiam velit laudantium rerum qui libero. Et numquam sed voluptatem reprehenderit quod ipsam cupiditate.",
+            "value": 28509,
+            "coolFactor": 292997,
+            "isPublished": false,
+            "owner": "/api/users/2",
+            "shortDescription": "Ipsa si...",
+            "createdAtAgo": "35 years ago"
+        },
+        {
+            "@id": "/api/treasures/3",
+            "@type": "Treasure",
+            "createdAt": "2005-05-21T13:52:08+00:00",
+            "updatedAt": "2019-01-11T23:58:50+00:00",
+            "id": 3,
+            "name": "Aut maiores et quae. Fugit quod autem accusamus porro ut. Deleniti ut omnis voluptatem beatae sunt. Sit est quo non voluptas.",
+            "description": "Ea magni nobis deserunt. Veniam itaque asperiores autem facilis. Officiis voluptas assumenda sint. Ut in et facere temporibus minima. Non in voluptatibus quos molestias explicabo sequi.",
+            "value": 607768,
+            "coolFactor": 6548,
+            "isPublished": false,
+            "owner": "/api/users/3",
+            "shortDescription": "Ea magn...",
+            "createdAtAgo": "18 years ago"
+        },
+        {
+            "@id": "/api/treasures/4",
+            "@type": "Treasure",
+            "createdAt": "1988-05-18T21:53:03+00:00",
+            "updatedAt": "2014-06-15T17:24:57+00:00",
+            "id": 4,
+            "name": "Corrupti aliquam ducimus illo fugit soluta odio omnis sunt. Ipsam dolores modi dolorum velit fuga facilis. Dolor et eos voluptate alias maiores non adipisci. Laboriosam repellendus dolorem libero ducimus cum voluptatibus.",
+            "description": "Iste aliquid aut est minus voluptatem ut et. Aut libero ut non nihil dolore. Fuga non dolor ut in.",
+            "value": 5,
+            "coolFactor": 528310641,
+            "isPublished": true,
+            "owner": "/api/users/4",
+            "shortDescription": "Iste al...",
+            "createdAtAgo": "35 years ago"
+        },
+        {
+            "@id": "/api/treasures/5",
+            "@type": "Treasure",
+            "createdAt": "2019-08-18T21:27:04+00:00",
+            "updatedAt": "1970-04-29T00:52:02+00:00",
+            "id": 5,
+            "name": "Ea incidunt et autem accusamus. Non ut at ullam adipisci omnis rerum. In eum esse repellendus rerum deleniti nobis numquam. Vero doloribus atque omnis explicabo corrupti dignissimos voluptas. Et nobis incidunt nihil porro recusandae voluptatem provident.",
+            "description": "Minus voluptas rerum expedita officiis quis molestiae. Nihil esse quam culpa nostrum. Porro voluptates aperiam hic. Et ipsa est tenetur.",
+            "value": 184318230,
+            "coolFactor": 78,
+            "isPublished": false,
+            "owner": "/api/users/5",
+            "shortDescription": "Minus v...",
+            "createdAtAgo": "4 years ago"
+        }
+    ],
+    "hydra:search": {
+        "@type": "hydra:IriTemplate",
+        "hydra:template": "/api/treasures{?isPublished,properties[],owner.name,name,description,value[between],value[gt],value[gte],value[lt],value[lte],owner,owner[]}",
+        "hydra:variableRepresentation": "BasicRepresentation",
+        "hydra:mapping": [
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "isPublished",
+                "property": "isPublished",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "properties[]",
+                "property": null,
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "owner.name",
+                "property": "owner.name",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "name",
+                "property": "name",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "description",
+                "property": "description",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "value[between]",
+                "property": "value",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "value[gt]",
+                "property": "value",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "value[gte]",
+                "property": "value",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "value[lt]",
+                "property": "value",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "value[lte]",
+                "property": "value",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "owner",
+                "property": "owner",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "owner[]",
+                "property": "owner",
+                "required": false
+            }
+        ]
+    }
+}

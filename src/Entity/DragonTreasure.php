@@ -6,6 +6,7 @@ use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
@@ -17,6 +18,7 @@ use ApiPlatform\Metadata\Put;
 use ApiPlatform\Serializer\Filter\PropertyFilter;
 use App\Entity\Traits\Timestamp;
 use App\Repository\DragonTreasureRepository;
+use App\Validator\IsValidOwner;
 use Carbon\Carbon;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -39,10 +41,13 @@ use function Symfony\Component\String\u;
     operations: [
         new Get(normalizationContext: ['groups' => ['treasure:read', 'treasure:item:read']]),
         new GetCollection(),
-        new Post(),
-        new Put(),
-        new Patch(),
-        new Delete()
+        new Post(security: 'is_granted("ROLE_TREASURE_CREATE")',),
+//        new Put( security: 'is_granted("ROLE_TREASURE_EDIT")',),
+        new Patch(
+            security: 'is_granted("EDIT", object)',
+//            securityPostDenormalize: 'is_granted("EDIT", object)'
+        ),
+        new Delete(  security: 'is_granted("ROLE_ADMIN")',)
     ],
     formats: [
         'jsonld',
@@ -137,18 +142,21 @@ class DragonTreasure
     #[GreaterThanOrEqual(0)]
     #[LessThanOrEqual(10)]
     #[NotBlank]
-    #[NotNull]
     #[Type('numeric')]
-    private ?int $coolFactor = 0;
+    private ?int $coolFactor;
 
-    #[Groups(['treasure:read', 'treasure:write'])]
+    #[Groups(['admin:read', 'admin:write', 'owner:read'])]
     #[ORM\Column]
+    #[Type('bool')]
+//    #[ApiProperty(readable: false)]
+//    #[ApiProperty(security: 'is_granted("EDIT", object)')] //To indicate this property should return when user can edit via DragonTreasureVoter
     private ?bool $isPublished = false;
 
-    #[Groups(['treasure:read'])]
+    #[Groups(['treasure:read', 'treasure:write'])]
     #[ORM\ManyToOne(inversedBy: 'dragonTreasures')]
     #[ORM\JoinColumn(name: 'owner_id', onDelete: 'CASCADE')]
     #[ApiFilter(SearchFilter::class, 'exact')]
+    #[IsValidOwner]
     private ?User $owner = null;
 
     public function __construct(string $name = null)
@@ -177,6 +185,12 @@ class DragonTreasure
     public function getShortDescription(): ?string
     {
         return u($this->description)->truncate(10, '...');
+    }
+
+    #[Groups(['treasure:read'])]
+    public function getIsRich(): ?string
+    {
+        return true;
     }
 
     public function getDescription(): ?string
@@ -219,24 +233,24 @@ class DragonTreasure
         return $this;
     }
 
-    public function getCoolFactor(): ?int
+    public function getCoolFactor()
     {
         return $this->coolFactor;
     }
 
-    public function setCoolFactor(int $coolFactor): static
+    public function setCoolFactor(?int $coolFactor): static
     {
         $this->coolFactor = $coolFactor;
 
         return $this;
     }
 
-    public function getIsPublished(): ?bool
+    public function getIsPublished()
     {
         return $this->isPublished;
     }
 
-    public function setIsPublished(bool $isPublished): static
+    public function setIsPublished(?bool $isPublished): static
     {
         $this->isPublished = $isPublished;
 

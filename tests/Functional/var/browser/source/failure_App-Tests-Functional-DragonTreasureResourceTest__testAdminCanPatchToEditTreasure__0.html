@@ -1,0 +1,421 @@
+{
+    "@id": "/api/errors/403",
+    "@type": "hydra:Error",
+    "title": "An error occurred",
+    "detail": "Access Denied.",
+    "status": 403,
+    "trace": [
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\symfony\\security-http\\Firewall\\ExceptionListener.php",
+            "line": 103,
+            "function": "handleAccessDeniedException",
+            "class": "Symfony\\Component\\Security\\Http\\Firewall\\ExceptionListener",
+            "type": "->",
+            "args": [
+                [],
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\symfony\\event-dispatcher\\Debug\\WrappedListener.php",
+            "line": 116,
+            "function": "onKernelException",
+            "class": "Symfony\\Component\\Security\\Http\\Firewall\\ExceptionListener",
+            "type": "->",
+            "args": [
+                [],
+                "kernel.exception",
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\symfony\\event-dispatcher\\EventDispatcher.php",
+            "line": 220,
+            "function": "__invoke",
+            "class": "Symfony\\Component\\EventDispatcher\\Debug\\WrappedListener",
+            "type": "->",
+            "args": [
+                [],
+                "kernel.exception",
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\symfony\\event-dispatcher\\EventDispatcher.php",
+            "line": 56,
+            "function": "callListeners",
+            "class": "Symfony\\Component\\EventDispatcher\\EventDispatcher",
+            "type": "->",
+            "args": [
+                [
+                    [],
+                    [],
+                    [],
+                    [],
+                    [],
+                    [],
+                    []
+                ],
+                "kernel.exception",
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\symfony\\event-dispatcher\\Debug\\TraceableEventDispatcher.php",
+            "line": 139,
+            "function": "dispatch",
+            "class": "Symfony\\Component\\EventDispatcher\\EventDispatcher",
+            "type": "->",
+            "args": [
+                [],
+                "kernel.exception"
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\symfony\\http-kernel\\HttpKernel.php",
+            "line": 240,
+            "function": "dispatch",
+            "class": "Symfony\\Component\\EventDispatcher\\Debug\\TraceableEventDispatcher",
+            "type": "->",
+            "args": [
+                [],
+                "kernel.exception"
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\symfony\\http-kernel\\HttpKernel.php",
+            "line": 91,
+            "function": "handleThrowable",
+            "class": "Symfony\\Component\\HttpKernel\\HttpKernel",
+            "type": "->",
+            "args": [
+                [],
+                [],
+                1
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\symfony\\http-kernel\\Kernel.php",
+            "line": 197,
+            "function": "handle",
+            "class": "Symfony\\Component\\HttpKernel\\HttpKernel",
+            "type": "->",
+            "args": [
+                [],
+                1,
+                true
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\symfony\\http-kernel\\HttpKernelBrowser.php",
+            "line": 65,
+            "function": "handle",
+            "class": "Symfony\\Component\\HttpKernel\\Kernel",
+            "type": "->",
+            "args": [
+                [],
+                1,
+                true
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\symfony\\framework-bundle\\KernelBrowser.php",
+            "line": 171,
+            "function": "doRequest",
+            "class": "Symfony\\Component\\HttpKernel\\HttpKernelBrowser",
+            "type": "->",
+            "args": [
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\symfony\\browser-kit\\AbstractBrowser.php",
+            "line": 403,
+            "function": "doRequest",
+            "class": "Symfony\\Bundle\\FrameworkBundle\\KernelBrowser",
+            "type": "->",
+            "args": [
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\zenstruck\\browser\\src\\Browser\\Session\\Driver\\BrowserKitDriver.php",
+            "line": 86,
+            "function": "request",
+            "class": "Symfony\\Component\\BrowserKit\\AbstractBrowser",
+            "type": "->",
+            "args": [
+                "PATCH",
+                "http://localhost/api/treasures/1",
+                [],
+                [],
+                {
+                    "HTTP_USER_AGENT": "Symfony BrowserKit",
+                    "HTTP_ACCEPT": "application/ld+json",
+                    "HTTP_AUTHORIZATION": "Bearer tcp_f1c7984aa87192fa20a6e124daa02c4eb9aa94d59a29639670495a37a02d68b0",
+                    "CONTENT_TYPE": "application/json",
+                    "HTTP_HOST": "localhost",
+                    "HTTPS": false
+                },
+                "{\"coolFactor\":4}"
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\zenstruck\\browser\\src\\Browser\\Session\\Driver\\BrowserKitDriver.php",
+            "line": 711,
+            "function": "Zenstruck\\Browser\\Session\\Driver\\{closure}",
+            "class": "Zenstruck\\Browser\\Session\\Driver\\BrowserKitDriver",
+            "type": "->",
+            "args": []
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\zenstruck\\browser\\src\\Browser\\Session\\Driver\\BrowserKitDriver.php",
+            "line": 88,
+            "function": "wrapRequest",
+            "class": "Zenstruck\\Browser\\Session\\Driver\\BrowserKitDriver",
+            "type": "->",
+            "args": [
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\zenstruck\\browser\\src\\Browser\\Session.php",
+            "line": 86,
+            "function": "request",
+            "class": "Zenstruck\\Browser\\Session\\Driver\\BrowserKitDriver",
+            "type": "->",
+            "args": [
+                "PATCH",
+                "api/treasures/1",
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\zenstruck\\browser\\src\\Browser\\KernelBrowser.php",
+            "line": 301,
+            "function": "request",
+            "class": "Zenstruck\\Browser\\Session",
+            "type": "->",
+            "args": [
+                "PATCH",
+                "api/treasures/1",
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\zenstruck\\browser\\src\\Browser\\KernelBrowser.php",
+            "line": 363,
+            "function": "request",
+            "class": "Zenstruck\\Browser\\KernelBrowser",
+            "type": "->",
+            "args": [
+                "PATCH",
+                "api/treasures/1",
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\tests\\Functional\\DragonTreasureResourceTest.php",
+            "line": 135,
+            "function": "patch",
+            "class": "Zenstruck\\Browser\\KernelBrowser",
+            "type": "->",
+            "args": [
+                "api/treasures/1",
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php",
+            "line": 1612,
+            "function": "testAdminCanPatchToEditTreasure",
+            "class": "App\\Tests\\Functional\\DragonTreasureResourceTest",
+            "type": "->",
+            "args": []
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php",
+            "line": 1218,
+            "function": "runTest",
+            "class": "PHPUnit\\Framework\\TestCase",
+            "type": "->",
+            "args": []
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\src\\Framework\\TestResult.php",
+            "line": 728,
+            "function": "runBare",
+            "class": "PHPUnit\\Framework\\TestCase",
+            "type": "->",
+            "args": []
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\src\\Framework\\TestCase.php",
+            "line": 968,
+            "function": "run",
+            "class": "PHPUnit\\Framework\\TestResult",
+            "type": "->",
+            "args": [
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\src\\Framework\\TestSuite.php",
+            "line": 684,
+            "function": "run",
+            "class": "PHPUnit\\Framework\\TestCase",
+            "type": "->",
+            "args": [
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\src\\Framework\\TestSuite.php",
+            "line": 684,
+            "function": "run",
+            "class": "PHPUnit\\Framework\\TestSuite",
+            "type": "->",
+            "args": [
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\src\\TextUI\\TestRunner.php",
+            "line": 651,
+            "function": "run",
+            "class": "PHPUnit\\Framework\\TestSuite",
+            "type": "->",
+            "args": [
+                []
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\src\\TextUI\\Command.php",
+            "line": 144,
+            "function": "run",
+            "class": "PHPUnit\\TextUI\\TestRunner",
+            "type": "->",
+            "args": [
+                [
+                    {
+                        "8": []
+                    }
+                ],
+                {
+                    "extensions": [],
+                    "listGroups": false,
+                    "listSuites": false,
+                    "listTests": false,
+                    "listTestsXml": false,
+                    "loader": null,
+                    "useDefaultConfiguration": true,
+                    "loadedExtensions": [],
+                    "unavailableExtensions": [],
+                    "notLoadedExtensions": [],
+                    "configuration": "D:\\laragon\\www\\api-platform\\phpunit.xml.dist",
+                    "filter": "/(App\\\\Tests\\\\Functional\\\\DragonTreasureResourceTest::testAdminCanPatchToEditTreasure)( .*)?$/",
+                    "testSuffixes": [
+                        "DragonTreasureResourceTest.php"
+                    ],
+                    "printer": "PHPUnit\\Util\\Log\\TeamCity",
+                    "configurationObject": [],
+                    "stderr": false,
+                    "columns": 80,
+                    "warnings": [],
+                    "debug": false,
+                    "listeners": [
+                        []
+                    ],
+                    "backupGlobals": false,
+                    "backupStaticAttributes": false,
+                    "beStrictAboutChangesToGlobalState": false,
+                    "cacheResult": true,
+                    "colors": "auto",
+                    "convertDeprecationsToExceptions": false,
+                    "convertErrorsToExceptions": true,
+                    "convertNoticesToExceptions": true,
+                    "convertWarningsToExceptions": true,
+                    "processIsolation": false,
+                    "stopOnDefect": false,
+                    "stopOnError": false,
+                    "stopOnFailure": false,
+                    "stopOnWarning": false,
+                    "stopOnIncomplete": false,
+                    "stopOnRisky": false,
+                    "stopOnSkipped": false,
+                    "failOnEmptyTestSuite": false,
+                    "failOnIncomplete": false,
+                    "failOnRisky": false,
+                    "failOnSkipped": false,
+                    "failOnWarning": false,
+                    "enforceTimeLimit": false,
+                    "defaultTimeLimit": 1,
+                    "timeoutForSmallTests": 1,
+                    "timeoutForMediumTests": 10,
+                    "timeoutForLargeTests": 60,
+                    "reportUselessTests": true,
+                    "strictCoverage": false,
+                    "ignoreDeprecatedCodeUnitsFromCodeCoverage": false,
+                    "disallowTestOutput": false,
+                    "disallowTodoAnnotatedTests": false,
+                    "beStrictAboutResourceUsageDuringSmallTests": false,
+                    "verbose": false,
+                    "reverseDefectList": false,
+                    "forceCoversAnnotation": false,
+                    "disableCodeCoverageIgnore": false,
+                    "registerMockObjectsFromTestArgumentsRecursively": false,
+                    "noInteraction": false,
+                    "executionOrder": 0,
+                    "resolveDependencies": true,
+                    "bootstrap": "D:\\laragon\\www\\api-platform\\tests/bootstrap.php",
+                    "executionOrderDefects": 0,
+                    "crap4jThreshold": 30,
+                    "excludeGroups": [],
+                    "groups": [],
+                    "randomOrderSeed": 1697507936,
+                    "repeat": false,
+                    "reportHighLowerBound": 90,
+                    "reportLowUpperBound": 50,
+                    "reverseList": false,
+                    "testdoxExcludeGroups": [],
+                    "testdoxGroups": [],
+                    "cacheResultFile": "D:\\laragon\\www\\api-platform"
+                },
+                [],
+                true
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\src\\TextUI\\Command.php",
+            "line": 97,
+            "function": "run",
+            "class": "PHPUnit\\TextUI\\Command",
+            "type": "->",
+            "args": [
+                [
+                    "D:/laragon/www/api-platform/vendor/phpunit/phpunit/phpunit",
+                    "--configuration",
+                    "D:\\laragon\\www\\api-platform\\phpunit.xml.dist",
+                    "--filter",
+                    "/(App\\\\Tests\\\\Functional\\\\DragonTreasureResourceTest::testAdminCanPatchToEditTreasure)( .*)?$/",
+                    "--test-suffix",
+                    "DragonTreasureResourceTest.php",
+                    "D:\\laragon\\www\\api-platform\\tests\\Functional",
+                    "--teamcity"
+                ],
+                true
+            ]
+        },
+        {
+            "file": "D:\\laragon\\www\\api-platform\\vendor\\phpunit\\phpunit\\phpunit",
+            "line": 107,
+            "function": "main",
+            "class": "PHPUnit\\TextUI\\Command",
+            "type": "::",
+            "args": []
+        }
+    ],
+    "type": "/errors/403",
+    "hydra:title": "An error occurred",
+    "hydra:description": "Access Denied."
+}
