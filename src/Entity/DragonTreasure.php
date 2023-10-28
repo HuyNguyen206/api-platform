@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\JsonLd\Serializer\ObjectNormalizer;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
@@ -15,7 +16,10 @@ use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
+use ApiPlatform\OpenApi\Model\Operation;
+use ApiPlatform\OpenApi\Model\Response;
 use ApiPlatform\Serializer\Filter\PropertyFilter;
+use App\Controller\DownloadController;
 use App\Entity\Traits\Timestamp;
 use App\Repository\DragonTreasureRepository;
 use App\Validator\IsValidOwner;
@@ -27,6 +31,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Mapping\Annotation\Timestampable;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\SerializedName;
+use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
 use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
 use Symfony\Component\Validator\Constraints\LessThanOrEqual;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -39,6 +44,26 @@ use function Symfony\Component\String\u;
     shortName: 'Treasure',
     description: 'Rare and valuable resources',
     operations: [
+        new Get(uriTemplate: 'download/{id}',
+            controller: DownloadController::class,
+            read: false, normalizationContext: ['groups' => 'nothing'],
+            openapi: new Operation(
+                responses: [
+                    '200' => new Response(
+                        description: 'Download', content: new \ArrayObject([
+                        'application/pdf' => [
+                            'schema' => [
+                                'type' => 'object',
+//                                'properties' => [
+//                                    'name' => ['type' => 'string'],
+//                                    'description' => ['type' => 'string']
+//                                ]
+                            ]
+                    ]])
+                    )
+                ]
+            )
+        ),
         new Get(normalizationContext: ['groups' => ['treasure:read', 'treasure:item:read']]),
         new GetCollection(),
         new Post(security: 'is_granted("ROLE_TREASURE_CREATE")',),
@@ -60,7 +85,8 @@ use function Symfony\Component\String\u;
         'groups' => ['treasure:read']
     ],
     denormalizationContext: [
-        'groups' => ['treasure:write']
+        'groups' => ['treasure:write'],
+        AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => false
     ],
     paginationItemsPerPage: 10
 )]
@@ -78,6 +104,9 @@ use function Symfony\Component\String\u;
     ],
     normalizationContext: [
         'groups' => ['treasure:read']
+    ],
+    denormalizationContext: [
+        AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => false
     ],
 )]
 #[ApiFilter(BooleanFilter::class, properties: ['isPublished'])]
@@ -221,19 +250,19 @@ class DragonTreasure
         return $this;
     }
 
-    public function getValue(): ?int
+    public function getValue()
     {
         return $this->value;
     }
 
-    public function setValue(int $value): static
+    public function setValue($value): static
     {
         $this->value = $value;
 
         return $this;
     }
 
-    public function getCoolFactor()
+    public function getCoolFactor(): ?int
     {
         return $this->coolFactor;
     }
