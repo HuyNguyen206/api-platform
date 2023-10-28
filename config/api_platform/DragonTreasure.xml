@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- api/config/api_platform/resources.xml -->
+<resources xmlns="https://api-platform.com/schema/metadata/resources-3.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="https://api-platform.com/schema/metadata/resources-3.0
+        https://api-platform.com/schema/metadata/resources-3.0.xsd">
+    <resource class="App\Entity\DragonTreasure">
+        <operations>
+            <operation class="ApiPlatform\Metadata\Get" uriTemplate="download/{id}"
+                       controller="App\Controller\DownloadController"
+                       read="false" >
+<!--                <normalizationContext>-->
+<!--                    <values>-->
+<!--                        <value name="groups">nothing</value>-->
+<!--                    </values>-->
+<!--                </normalizationContext>-->
+                <openapiContext>
+                    <values>
+                        <value name="summary">Download invoice</value>
+                        <value name="description">Download invoice pdf</value>
+                        <value name="tags">
+                            <values>
+                                <value>Treasure</value>
+                            </values>
+                        </value>
+<!--                        <value name="description">-->
+<!--                            Download test-->
+<!--                        </value>-->
+                        <value name="responses">
+                            <values>
+                                <value name="200">
+                                    <values>
+<!--                                        <value name="description">-->
+<!--                                            Download invoice-->
+<!--                                        </value>-->
+                                        <value name="content">
+                                            <values>
+                                                <value name="application/pdf">
+                                                    <values>
+                                                        <value name="schema">
+                                                            <values>
+                                                                <value name="type">object</value>
+                                                            </values>
+                                                        </value>
+                                                    </values>
+                                                </value>
+                                            </values>
+
+                                        </value>
+                                    </values>
+                                </value>
+                            </values>
+                        </value>
+                    </values>
+<!--                    <responses>-->
+<!--                        <response status="200" description="Download" >-->
+<!--                            <content>-->
+<!--                                <values>-->
+<!--                                    <value name=""/>-->
+<!--                                </values>-->
+<!--                            </content>-->
+<!--                        </response>-->
+<!--                    </responses>-->
+                </openapiContext>
+            </operation>
+            <operation class="ApiPlatform\Metadata\Post" name="post_publication"
+                       uriTemplate="/dragons/books/{id}/publication"
+                       controller="App\Controller\CreateBookPublicationController"/>
+        </operations>
+    </resource>
+</resources>
+        <!--        new Get(uriTemplate: 'download/{id}',-->
+        <!--        controller: DownloadController::class,-->
+        <!--        read: false, normalizationContext: ['groups' => 'nothing'],-->
+        <!--        openapi: new Operation(-->
+        <!--        responses: [-->
+        <!--        '200' => new Response(-->
+        <!--        description: 'Download', content: new \ArrayObject([-->
+        <!--        'application/pdf' => [-->
+        <!--        'schema' => [-->
+        <!--        'type' => 'object',-->
+        <!--        //                                'properties' => [-->
+        <!--        //                                    'name' => ['type' => 'string'],-->
+        <!--        //                                    'description' => ['type' => 'string']-->
+        <!--        //                                ]-->
+        <!--        ]-->
+        <!--        ]])-->
+        <!--        )-->
+        <!--        ]-->
+        <!--        )-->
+        <!--        ),-->
